@@ -28,12 +28,9 @@ const NewsPage = () => {
   //   getPosts();
   // }, []);
 
-  let financialPosts = []
-  if (posts !== undefined) {
-    financialPosts = posts?.blog_post.filter(
-      (item) => item.post_category === 'نصائح مالية'
-    )
-  }
+  const financialPosts = posts?.blog_post.filter(
+    (item) => item.post_category === 'نصائح مالية'
+  )
 
   return (
     <Container className='mt-4' as='main'>
