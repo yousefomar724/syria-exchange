@@ -1,5 +1,6 @@
 {
   "name": "syria-exchange",
+  "homapage": "http://futurecode-co.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
