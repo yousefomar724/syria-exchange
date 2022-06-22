@@ -1,5 +1,6 @@
+import { hydrate, render } from 'react-dom'
 import React from 'react'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import { SWRConfig } from 'swr'
 import './index.css'
 import App from './App'
@@ -14,18 +15,37 @@ import './fonts/AlQabas-Regular.ttf'
 import './fonts/29LT-Bukra.ttf'
 import './i18n'
 
-ReactDOM.render(
-  <BrowserRouter>
-    <SWRConfig
-      value={{
-        fetcher: (r) =>
-          fetch(`https://syria-exchange.com/panel/v1/api${r}`).then((res) =>
-            res.json()
-          ),
-      }}
-    >
-      <App />
-    </SWRConfig>
-  </BrowserRouter>,
-  document.getElementById('root')
-)
+const rootElement = document.getElementById('root')
+if (rootElement.hasChildNodes()) {
+  hydrate(
+    <BrowserRouter>
+      <SWRConfig
+        value={{
+          fetcher: (r) =>
+            fetch(`https://syria-exchange.com/panel/v1/api${r}`).then((res) =>
+              res.json()
+            ),
+        }}
+      >
+        <App />
+      </SWRConfig>
+    </BrowserRouter>,
+    rootElement
+  )
+} else {
+  render(
+    <BrowserRouter>
+      <SWRConfig
+        value={{
+          fetcher: (r) =>
+            fetch(`https://syria-exchange.com/panel/v1/api${r}`).then((res) =>
+              res.json()
+            ),
+        }}
+      >
+        <App />
+      </SWRConfig>
+    </BrowserRouter>,
+    rootElement
+  )
+}
