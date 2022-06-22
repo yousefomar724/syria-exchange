@@ -51,7 +51,7 @@ const SinglePostPage = () => {
       {post && (
         <SEO
           title={post.post_title.trim()}
-          description={`${post.post_body.substring(0, 120)}...`}
+          description={`${post.post_body.substring(3, 120)}...`}
           imageUrl={post.post_image}
           ogType='article'
           articleTag={post.post_category}
